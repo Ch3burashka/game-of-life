@@ -1,0 +1,11 @@
+BasedOnStyle: Microsoft
+---
+Language: Cpp
+# Force pointers to the type for C++.
+DerivePointerAlignment: false
+PointerAlignment: Left
+Standard: c++20
+TabWidth: 4
+UseTab: Always
+NamespaceIndentation: All
+IndentCaseBlocks: true

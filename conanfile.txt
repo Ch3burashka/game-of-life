@@ -1,0 +1,10 @@
+[requires]
+sdl/2.0.14
+gtest/1.10.0
+boost/1.76.0
+
+[generators]
+cmake
+
+[options]
+*:shared=False

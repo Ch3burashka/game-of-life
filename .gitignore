@@ -1,3 +1,11 @@
+.idea
+cmake-build-debug/
+cmake-build-minsizerel/
+cmake-build-release/
+cmake-build-relwithdebinfo/
+debug/
+release/
+build/
 # Prerequisites
 *.d
 
@@ -30,3 +38,4 @@
 *.exe
 *.out
 *.app
+

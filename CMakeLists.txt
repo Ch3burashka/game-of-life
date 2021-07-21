@@ -53,6 +53,8 @@ if (APPLE)
             MACOSX_BUNDLE_BUNDLE_VERSION "0.1"
             MACOSX_BUNDLE_SHORT_VERSION_STRING "0.1"
             )
+else ()
+    add_executable(game-of-life ${APP} ${SOURCES})
 endif ()
 
 target_link_libraries(game-of-life-tests ${CONAN_LIBS})

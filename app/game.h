@@ -14,11 +14,9 @@ class Game
 	int height_;
 	int cell_size_ = 10;
 	SDL_Color grid_background = {22, 22, 22, 255}; // Barely Black
-	SDL_Color grid_line_color = {44, 44, 44, 255}; // Dark grey
+	SDL_Color grid_line_color = {0, 102, 52, 255}; // Dark grey
 	SDL_Color grid_cursor_ghost_color = {255, 255, 255, 255};
 	SDL_Color grid_cursor_ghost2_color = {80, 44, 44, 255}; // Dark grey
-
-	SDL_Color grid_cursor_color = {27, 255, 212, 255};
 
 	int window_width = 0;
 	int window_height = 0;

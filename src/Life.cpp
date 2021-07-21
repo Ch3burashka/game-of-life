@@ -247,3 +247,8 @@ void Life::LoadState(const std::string& path)
 	::deserialize(ifile, cells_states_);
 	ifile.close();
 }
+
+void Life::ClearStates()
+{
+	std::fill(cells_states_.begin(), cells_states_.end(), false);
+}

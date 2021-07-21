@@ -43,6 +43,7 @@ class Life
 
 	void LoadState(const std::string& path);
 
+	void ClearStates();
   private:
 	int width_;
 	int height_;

@@ -69,6 +69,11 @@ void Game::HandleEvents()
 				life_ptr_->LoadState(backup_path_);
 				break;
 			}
+		case SDLK_c:
+		{
+			life_ptr_->ClearStates();
+			break;
+		}
 
 		case SDLK_ESCAPE:
 			{
@@ -156,20 +161,10 @@ void Game::RenderLoop()
 }
 void Game::Render()
 {
+	// Render background
 	SDL_SetRenderDrawColor(m_renderer_, grid_background.r, grid_background.g, grid_background.b, grid_background.a);
 	SDL_RenderClear(m_renderer_);
-	// Draw grid lines.
-	SDL_SetRenderDrawColor(m_renderer_, grid_line_color.r, grid_line_color.g, grid_line_color.b, grid_line_color.a);
-
-	for (int x = 0; x < 1 + width_ * cell_size_; x += cell_size_)
-	{
-		SDL_RenderDrawLine(m_renderer_, x, 0, x, window_height);
-	}
-
-	for (int y = 0; y < 1 + height_ * cell_size_; y += cell_size_)
-	{
-		SDL_RenderDrawLine(m_renderer_, 0, y, window_width, y);
-	}
+	// Render cells
 	auto state = GetRectsOnCurrentState();
 	for (auto& rect : state)
 	{
@@ -177,7 +172,6 @@ void Game::Render()
 							   grid_cursor_ghost_color.b, grid_cursor_ghost_color.a);
 		SDL_RenderFillRect(m_renderer_, &rect);
 	}
-
 	// Draw grid ghost cursor.
 	if (mouse_active && mouse_hover)
 	{
@@ -185,10 +179,16 @@ void Game::Render()
 							   grid_cursor_ghost2_color.b, grid_cursor_ghost2_color.a);
 		SDL_RenderFillRect(m_renderer_, &grid_cursor_ghost);
 	}
-
-	//	SDL_SetRenderDrawColor(m_renderer_, grid_cursor_color.r, grid_cursor_color.g, grid_cursor_color.b,
-	//						   grid_cursor_color.a);
-	//	SDL_RenderFillRect(m_renderer_, &grid_cursor);
+	// Draw grid lines.
+	SDL_SetRenderDrawColor(m_renderer_, grid_line_color.r, grid_line_color.g, grid_line_color.b, grid_line_color.a);
+	for (int x = 0; x < 1 + width_ * cell_size_; x += cell_size_)
+	{
+		SDL_RenderDrawLine(m_renderer_, x, 0, x, window_height);
+	}
+	for (int y = 0; y < 1 + height_ * cell_size_; y += cell_size_)
+	{
+		SDL_RenderDrawLine(m_renderer_, 0, y, window_width, y);
+	}
 
 	SDL_RenderPresent(m_renderer_);
 	SDL_Delay(delay_);
